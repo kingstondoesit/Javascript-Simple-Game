@@ -43,7 +43,7 @@ if (playgame) {
                 }
                 
                 else{
-                    alert ("You did not enter rocks, paper, scissors");
+                    alert ("You did not enter rock, paper, scissors");
                 }
                 
             }
