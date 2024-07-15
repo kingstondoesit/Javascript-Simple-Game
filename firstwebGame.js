@@ -14,9 +14,12 @@ if (playgame) {
                 let playerOne = playerChoice.trim().toLowerCase();
         
                 if (playerOne ==="rock" || playerOne ==="paper" || playerOne === "scissors"){
-                    //proceed
-                
+                    //Proceed to generate computer response
+                    
+
                     let computerChoice = Math.floor(Math.random() * 3 + 1); //Generate random value between 1 and 3
+                    // let computerChoice = Math.ceil(Math.random() * 3 );
+
                     let computer = computerChoice === 1 ?"rock" : computerChoice === 2 ? "paper" : "scissors"
                     
                     let result =
