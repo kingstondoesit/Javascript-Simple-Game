@@ -12,9 +12,6 @@ const typedValueElement = document.getElementById('typed-value');
 const promptStart = document.getElementById('prompt_start')
 const promptAgain = document.getElementById('prompt_again')
 
-//Hide promptAgain by default
-promptAgain.className = 'none' 
-
 //Input field disabled by default
 typedValueElement.disabled = true;
 
@@ -41,7 +38,7 @@ document.getElementById('start').addEventListener('click', () => {
     const spanWords = words.map(word => `<span> ${word} </span>`);
 
     //Hide prompt message
-    promptAgain.className = 'none'
+    promptAgain.classList.add('none')
     promptStart.className = 'none'
 
     // Convert the array into a string and set as innerHTML on quoteElement
@@ -87,7 +84,7 @@ typedValueElement.addEventListener('input', () => {
         typedValueElement.disabled = true; //Disables input field on completion
 
         //Show prompt message to play again
-        promptAgain.className = '';
+        promptAgain.classList.remove('none');
 
     } else if (typedValue.endsWith(' ') && typedValue.trim() === currentWord) {
         // End of the current word
