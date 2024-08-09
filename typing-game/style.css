@@ -1,8 +1,31 @@
+html {
+    background-color: rgb(247, 244, 244);
+    width: 100vw;
+}
+
+body {
+    text-align: center;
+}
+
 .highlight {
     background-color: yellow;
 }
-  
+
 .error {
     background-color: lightcoral;
     border: red;
+}
+
+.main {
+    padding: auto;
+    margin-top: 18%;
+}
+
+.none {
+    display: none;
+}
+
+.quote {
+    font-size: larger;
+    font-weight: bold;
 }
