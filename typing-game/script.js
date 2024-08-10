@@ -1,4 +1,5 @@
 import { quotes } from './modules/quotes.js';
+import {saveHighScore, displayHighScores} from './modules/highscore.js';
 
 // Initialize variables to store the list of words and track the player's position
 let words = [];
@@ -99,6 +100,13 @@ typedValueElement.addEventListener('input', () => {
         document.getElementById('modalMessage').innerText = message;
         $('#exampleModalCenter').modal('show');
 
+        // Save the high score and check if it made it into the top 5
+        const isTopScore = saveHighScore(elapsedTime);
+
+        // Display the high scores with the current score highlighted if it's in the top 5
+        const highScoreElement = document.getElementById('highScores');
+        displayHighScores(highScoreElement, isTopScore ? elapsedTime : null);
+
         // //Remove Event listener
         // typedValueElement.removeEventListener('input', onInput)
 
@@ -121,7 +129,7 @@ typedValueElement.addEventListener('input', () => {
 
         // Highlight the new word
         quoteElement.children[wordIndex].className = 'highlight';
-        
+
     } else if (currentWord.startsWith(typedValue)) {
         // Correct typing so far
         // Clear any error styling
