@@ -8,6 +8,11 @@ body {
     text-align: center;
 }
 
+/* input {
+    width: 20rem !important;
+    padding:3px !important;
+} */
+
 .highlight {
     background-color: yellow;
 }
@@ -36,9 +41,10 @@ body {
     justify-content: center;
 }
 
-.form-input{
-    width: 20rem;
-    height: 1rem;
+.form input{
+    width: 18rem;
+    height: 1.1rem;
+    font-size: 80%;
 }
 
 .form-btn {
