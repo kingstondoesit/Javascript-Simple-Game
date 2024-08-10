@@ -31,12 +31,12 @@ body {
     font-weight: bold;
 }
 
-.form{
+.form {
     display: flex;
     justify-content: center;
 }
 
-.form input{
+.form input {
     width: 18rem;
     height: 1.1rem;
     font-size: 80%;

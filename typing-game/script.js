@@ -88,13 +88,16 @@ typedValueElement.addEventListener('input', () => {
     const typedValue = typedValueElement.value;
 
     if (typedValue === currentWord && wordIndex === words.length - 1) {
-        // End of the quote
-        // Display success message
+        // End of sentence
+        // Calculate the elapsed time
         const elapsedTime = new Date().getTime() - startTime;
         const message = `CONGRATULATIONS! You finished in ${
             elapsedTime / 1000
         } seconds.`;
-        messageElement.innerText = message;
+
+        // Display the modal with the success message
+        document.getElementById('modalMessage').innerText = message;
+        $('#exampleModalCenter').modal('show');
 
         // //Remove Event listener
         // typedValueElement.removeEventListener('input', onInput)
@@ -118,7 +121,7 @@ typedValueElement.addEventListener('input', () => {
 
         // Highlight the new word
         quoteElement.children[wordIndex].className = 'highlight';
-
+        
     } else if (currentWord.startsWith(typedValue)) {
         // Correct typing so far
         // Clear any error styling
