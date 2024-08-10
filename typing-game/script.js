@@ -9,8 +9,26 @@ let startTime = Date.now();
 const quoteElement = document.getElementById('quote');
 const messageElement = document.getElementById('message');
 const typedValueElement = document.getElementById('typed-value');
-const promptStart = document.getElementById('prompt_start')
-const promptAgain = document.getElementById('prompt_again')
+const promptStart = document.getElementById('prompt_start');
+const promptAgain = document.getElementById('prompt_again');
+const startButton = document.getElementById('start');
+
+const hidePrompt_Button = () => {
+    //Hide prompt message
+    promptAgain.classList.add('none');
+    promptStart.className = 'none';
+
+    //Hide Start Button
+    startButton.style.display = 'none';
+    startButton.classList.add('none');
+};
+
+const showPrompt_Button = () => {
+    //Show start button and prompt message to play again
+    promptAgain.classList.remove('none');
+    startButton.classList.remove('none');
+    startButton.style.display = 'inline-block';
+};
 
 //Input field disabled by default
 typedValueElement.disabled = true;
@@ -19,7 +37,7 @@ typedValueElement.disabled = true;
 typedValueElement.setAttribute('autocomplete', 'off');
 
 // Event listener for the start button
-document.getElementById('start').addEventListener('click', () => {
+startButton.addEventListener('click', () => {
     // Select a random quote
     const quoteIndex = Math.floor(Math.random() * quotes.length);
     const quote = quotes[quoteIndex];
@@ -31,21 +49,18 @@ document.getElementById('start').addEventListener('click', () => {
     wordIndex = 0;
 
     /* Update the UI
-    Create an array of span elements for each word
-    */
-    // const spanWords = words.map(function(word) { return `<span> ${word} </span>`; });
-    
-    const spanWords = words.map(word => `<span> ${word} </span>`);
+    Create an array of span elements for each word */
 
-    //Hide prompt message
-    promptAgain.classList.add('none')
-    promptStart.className = 'none'
+    // const spanWords = words.map(function(word) { return `<span> ${word} </span>`; });
+    const spanWords = words.map((word) => `<span> ${word} </span>`);
+
+    hidePrompt_Button();
 
     // Convert the array into a string and set as innerHTML on quoteElement
     quoteElement.innerHTML = spanWords.join('');
 
     //transform quote text by adding text formatting class
-    quoteElement.classList.add('quote')
+    quoteElement.classList.add('quote');
 
     // Highlight the first word
     quoteElement.childNodes[0].className = 'highlight';
@@ -54,12 +69,13 @@ document.getElementById('start').addEventListener('click', () => {
     messageElement.innerText = '';
 
     // Setup the textbox
-    typedValueElement.value = '';  // Clear the textbox
+    typedValueElement.value = '';
 
     //Enable input field
     typedValueElement.disabled = false;
 
-    typedValueElement.focus();  // Focus on the textbox
+    // Focus on the textbox
+    typedValueElement.focus();
 
     // Start the timer
     startTime = new Date().getTime();
@@ -75,7 +91,9 @@ typedValueElement.addEventListener('input', () => {
         // End of the quote
         // Display success message
         const elapsedTime = new Date().getTime() - startTime;
-        const message = `CONGRATULATIONS! You finished in ${elapsedTime / 1000} seconds.`;
+        const message = `CONGRATULATIONS! You finished in ${
+            elapsedTime / 1000
+        } seconds.`;
         messageElement.innerText = message;
 
         // //Remove Event listener
@@ -83,10 +101,9 @@ typedValueElement.addEventListener('input', () => {
 
         typedValueElement.disabled = true; //Disables input field on completion
 
-        //Show prompt message to play again
-        promptAgain.classList.remove('none');
+        showPrompt_Button();
 
-    } else if (typedValue.endsWith(' ') && typedValue.trim() === currentWord) {
+    } else if (typedValue.endsWith(' ') && typedValue === currentWord + ' ') {
         // End of the current word
         // Clear the textbox for the next word
         typedValueElement.value = '';
@@ -101,6 +118,7 @@ typedValueElement.addEventListener('input', () => {
 
         // Highlight the new word
         quoteElement.children[wordIndex].className = 'highlight';
+
     } else if (currentWord.startsWith(typedValue)) {
         // Correct typing so far
         // Clear any error styling

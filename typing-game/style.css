@@ -19,7 +19,7 @@ body {
 
 .main {
     padding: auto;
-    margin-top: 17%;
+    margin-top: 15%;
 }
 
 .none {
@@ -29,4 +29,19 @@ body {
 .quote {
     font-size: larger;
     font-weight: bold;
+}
+
+.form{
+    display: flex;
+    justify-content: center;
+}
+
+.form-input{
+    width: 20rem;
+    height: 1rem;
+}
+
+.form-btn {
+    display: inline-block;
+    margin-top: 1%;
 }
