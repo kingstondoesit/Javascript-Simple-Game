@@ -100,11 +100,12 @@ typedValueElement.addEventListener('input', () => {
         document.getElementById('modalMessage').innerText = message;
         $('#exampleModalCenter').modal('show');
 
-        // Save the high score and check if it made it into the top 5
+        // Save the high score and check if it made it into the top 10
         const isTopScore = saveHighScore(elapsedTime);
 
-        // Display the high scores with the current score highlighted if it's in the top 5
+        // Display the high scores with the current score highlighted if it's in the top 10
         const highScoreElement = document.getElementById('highScores');
+
         displayHighScores(highScoreElement, isTopScore ? elapsedTime : null);
 
         // //Remove Event listener
