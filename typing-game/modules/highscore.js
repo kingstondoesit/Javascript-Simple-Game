@@ -31,7 +31,7 @@ export function displayHighScores(element, currentScore = null) {
 
             // Use the styles in the list item
             return `<li style="font-weight: ${fontWeight}; background-color: ${backgroundColor}; color: ${color};">
-                ${index + 1}. ${score} seconds
+                ${index + 1}. ${score/1000} seconds
             </li>`;
         })
         .join('');
